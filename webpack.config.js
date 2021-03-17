@@ -3,21 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/main.js',
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'eval-source-map',  
+  devtool: 'inline-source-map',  
   devServer: {                 
     contentBase: './dist'      
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Shape Tracker',
-      template: './src/index.html',
-      inject: 'body'
+      title: 'Weekday Calendar',
+      template: './src/index.html'
     })
   ],
   module: {
@@ -29,11 +29,11 @@ module.exports = {
           'css-loader'
         ]
       },
-      { 
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader"
-      }
+      // { 
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   loader: "eslint-loader"
+      // }
     ]
   }
 };
