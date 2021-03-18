@@ -2,10 +2,10 @@
   "name": "weekday-calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --open",
+    "start": "npm run build && webpack-dev-server",
     "lint": "eslint src/*.js",
     "test": "jest --coverage"
   },
@@ -15,17 +15,9 @@
       "html"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Raya-Sodwilai/weekday-calculator.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Raya-Sodwilai/weekday-calculator/issues"
-  },
-  "homepage": "https://github.com/Raya-Sodwilai/weekday-calculator#readme",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
@@ -37,7 +29,7 @@
     "jest": "^24.9.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
-    "webpack": "^4.39.1",
+    "webpack": "4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
   },

@@ -1,22 +1,13 @@
-const path = require('path');
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  devtool: 'inline-source-map',  
-  devServer: {                 
-    contentBase: './dist'      
-  },
+  mode: 'production',
+  devtool: 'source-map',  
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Weekday Calendar',
       template: './src/index.html'
     })
   ],
@@ -29,11 +20,18 @@ module.exports = {
           'css-loader'
         ]
       },
-      // { 
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader"
-      // }
+      { 
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      }
     ]
+  },
+  devServer: {    
+    port: 7777,             
+    contentBase: [
+      resolve(__dirname, './dist')      
+    ],
+    historyApiFallback: true
   }
 };
